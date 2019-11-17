@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,18 +8,30 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using sba_webapi;
+using Projectmanager;
+using Projectmanager.Models;
 
-namespace sba_webapi.Controllers
+namespace Projectmanager.Controllers
 {
     public class ProjectsController : ApiController
     {
-        private ProjectManagerEntities db = new ProjectManagerEntities();
+        private projectmanagerEntities1 db = new projectmanagerEntities1();
 
         // GET: api/Projects
-        public IQueryable<Project> GetProjects()
+        public IEnumerable<Projects> GetProjects()
         {
-            return db.Projects;
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var projects = from s in db.Projects
+                     join r in db.Users on s.ID equals r.ID
+                     select new Projects
+                     {
+                         ID = s.ID, ProjectId = s.ProjectId, ProjectName = s.ProjectName, StartDate = s.StartDate,
+                         EndDate = s.EndDate, IsSetdate = s.IsSetdate, ProjectPriority = s.ProjectPriority,
+                         User = r
+                     };
+
+            return projects;
         }
 
         // GET: api/Projects/5
