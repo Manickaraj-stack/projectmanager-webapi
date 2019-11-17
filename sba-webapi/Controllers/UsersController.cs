@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,17 +8,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using sba_webapi;
+using Projectmanager;
 
-namespace sba_webapi.Controllers
+namespace Projectmanager.Controllers
 {
     public class UsersController : ApiController
     {
-        private ProjectManagerEntities db = new ProjectManagerEntities();
+        private projectmanagerEntities1 db = new projectmanagerEntities1();
 
         // GET: api/Users
         public IQueryable<User> GetUsers()
         {
+            db.Configuration.ProxyCreationEnabled = false;
             return db.Users;
         }
 
