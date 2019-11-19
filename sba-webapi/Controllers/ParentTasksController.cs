@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -14,7 +14,7 @@ namespace sba_webapi.Controllers
 {
     public class ParentTasksController : ApiController
     {
-        private ProjectManagerEntities db = new ProjectManagerEntities();
+        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
 
         // GET: api/ParentTasks
         public IQueryable<ParentTask> GetParentTasks()
