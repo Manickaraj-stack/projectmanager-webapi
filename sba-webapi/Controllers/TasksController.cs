@@ -17,9 +17,30 @@ namespace sba_webapi.Controllers
         private ProjectManagerEntities db = new ProjectManagerEntities();
 
         // GET: api/Tasks
-        public IQueryable<Task> GetTasks()
+        public IEnumerable<Tasks> GetTasks()
         {
-            return db.Tasks;
+            db.Configuration.ProxyCreationEnabled = false;
+            var tasks = from t in db.Tasks
+                           join p in db.ParentTasks on t.ParentId equals p.ParentId
+                           join s in db.Projects on t.ProjectId equals s.ProjectId
+                           join r in db.Users on s.ID equals r.ID
+                           select new Tasks
+                           {
+                               TaskId = t.TaskId,
+                               ProjectId = s.ProjectId,
+                               ParentId = p.ParentId,
+                               UserId = r.ID,
+                               StartDate = s.StartDate,
+                               EndDate = s.EndDate,
+                               IsParentTask = t.IsParentTask,
+                               TaskPriority = t.TaskPriority,
+                               ProjectName = s.ProjectName,
+                               ParentTaskName = p.ParentTask1,
+                               UserName = r.FirstName,
+                               TaskName = t.TaskName
+                           };
+
+            return tasks;
         }
 
         // GET: api/Tasks/5
