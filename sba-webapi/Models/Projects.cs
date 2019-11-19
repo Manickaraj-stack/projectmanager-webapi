@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Projectmanager.Models
+namespace sba_webapi.Models
 {
     public class Projects
     {
