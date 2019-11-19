@@ -23,13 +23,18 @@ namespace Projectmanager.Controllers
             db.Configuration.ProxyCreationEnabled = false;
 
             var projects = from s in db.Projects
-                     join r in db.Users on s.ID equals r.ID
-                     select new Projects
-                     {
-                         ID = s.ID, ProjectId = s.ProjectId, ProjectName = s.ProjectName, StartDate = s.StartDate,
-                         EndDate = s.EndDate, IsSetdate = s.IsSetdate, ProjectPriority = s.ProjectPriority,
-                         User = r
-                     };
+                           join r in db.Users on s.ID equals r.ID
+                           select new Projects
+                           {
+                               ID = s.ID,
+                               ProjectId = s.ProjectId,
+                               ProjectName = s.ProjectName,
+                               StartDate = s.StartDate,
+                               EndDate = s.EndDate,
+                               IsSetdate = s.IsSetdate,
+                               ProjectPriority = s.ProjectPriority,
+                               User = r
+                           };
 
             return projects;
         }
