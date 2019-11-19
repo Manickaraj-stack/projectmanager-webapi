@@ -19,6 +19,7 @@ namespace sba_webapi.Controllers
         // GET: api/ParentTasks
         public IQueryable<ParentTask> GetParentTasks()
         {
+            db.Configuration.ProxyCreationEnabled = false;
             return db.ParentTasks;
         }
 
