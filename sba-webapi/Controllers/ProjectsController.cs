@@ -8,14 +8,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Projectmanager;
-using Projectmanager.Models;
+using sba_webapi;
+using sba_webapi.Models;
 
-namespace Projectmanager.Controllers
+namespace sba_webapi.Controllers
 {
     public class ProjectsController : ApiController
     {
-        private projectmanagerEntities1 db = new projectmanagerEntities1();
+        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
 
         // GET: api/Projects
         public IEnumerable<Projects> GetProjects()
