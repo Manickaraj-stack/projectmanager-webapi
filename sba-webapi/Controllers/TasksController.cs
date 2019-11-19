@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -9,12 +9,13 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using sba_webapi;
+using sba_webapi.Models;
 
 namespace sba_webapi.Controllers
 {
     public class TasksController : ApiController
     {
-        private ProjectManagerEntities db = new ProjectManagerEntities();
+        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
 
         // GET: api/Tasks
         public IEnumerable<Tasks> GetTasks()
