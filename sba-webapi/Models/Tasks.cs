@@ -16,6 +16,9 @@ namespace Projectmanager.Models
         public string EndDate { get; set; }
         public int UserId { get; set; }
         public int TaskPriority { get; set; }
+        public string ProjectName { get; set; }
+        public string ParentTaskName { get; set; }
+        public string UserName { get; set; }
 
         public virtual ParentTask ParentTask { get; set; }
         public virtual Project Project { get; set; }
