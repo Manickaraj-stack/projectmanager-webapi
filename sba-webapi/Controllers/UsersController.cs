@@ -8,13 +8,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Projectmanager;
+using sba_webapi;
+using sba_webapi;
 
-namespace Projectmanager.Controllers
+namespace sba_webapi.Controllers
 {
     public class UsersController : ApiController
     {
-        private projectmanagerEntities1 db = new projectmanagerEntities1();
+        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
 
         // GET: api/Users
         public IQueryable<User> GetUsers()
