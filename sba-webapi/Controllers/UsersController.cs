@@ -9,13 +9,22 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using sba_webapi;
-using sba_webapi;
 
 namespace sba_webapi.Controllers
 {
     public class UsersController : ApiController
     {
-        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
+        private ProjectManagerEntities db = new ProjectManagerEntities();
+
+        public UsersController()
+        {
+
+        }
+
+        public UsersController(ProjectManagerEntities projectManagerEntities)
+        {
+            db = projectManagerEntities;
+        }
 
         // GET: api/Users
         public IQueryable<User> GetUsers()

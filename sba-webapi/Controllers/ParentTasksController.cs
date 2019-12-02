@@ -14,7 +14,17 @@ namespace sba_webapi.Controllers
 {
     public class ParentTasksController : ApiController
     {
-        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
+        private ProjectManagerEntities db = new ProjectManagerEntities();
+
+        public ParentTasksController()
+        {
+
+        }
+
+        public ParentTasksController(ProjectManagerEntities projectManagerEntities)
+        {
+            db = projectManagerEntities;
+        }
 
         // GET: api/ParentTasks
         public IQueryable<ParentTask> GetParentTasks()

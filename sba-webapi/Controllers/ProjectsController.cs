@@ -15,7 +15,17 @@ namespace sba_webapi.Controllers
 {
     public class ProjectsController : ApiController
     {
-        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
+        private ProjectManagerEntities db = new ProjectManagerEntities();
+
+        public ProjectsController()
+        {
+
+        }
+
+        public ProjectsController(ProjectManagerEntities projectManagerEntities)
+        {
+            db = projectManagerEntities;
+        }
 
         // GET: api/Projects
         public IEnumerable<Projects> GetProjects()

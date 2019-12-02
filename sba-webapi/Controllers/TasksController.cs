@@ -15,7 +15,17 @@ namespace sba_webapi.Controllers
 {
     public class TasksController : ApiController
     {
-        private ProjectManagerEntities1 db = new ProjectManagerEntities1();
+        private ProjectManagerEntities db = new ProjectManagerEntities();
+
+        public TasksController()
+        {
+
+        }
+
+        public TasksController(ProjectManagerEntities projectManagerEntities)
+        {
+            db = projectManagerEntities;
+        }
 
         // GET: api/Tasks
         public IEnumerable<Tasks> GetTasks()
